@@ -1,0 +1,32 @@
+﻿
+<div class="hstack">
+    <div><InputCheckbox @bind-Value="Item.IsComplete" /></div>
+    <div class="px-2 flex-grow-1">@Item.Name</div>
+
+    <div>
+        <a @onclick="deleteItem">
+            <i class="bi bi-trash-fill text-danger" />
+        </a>
+    </div>
+</div>
+
+@code {
+
+    /// <summary>
+    /// Tasker item we want to display
+    /// </summary>
+    [Parameter, EditorRequired]
+    public TaskerItem Item { get; set; }
+
+
+    /// <summary>
+    /// Delete item callback
+    /// </summary>
+    [Parameter]
+    public EventCallback<TaskerItem> OnDeleteCallBack { get; set; }
+
+    private async Task deleteItem()
+    {
+        await OnDeleteCallBack.InvokeAsync(Item);
+    }
+}
