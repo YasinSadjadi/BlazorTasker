@@ -1,3 +1,26 @@
-﻿.completed {
-    text-decoration: line-through;
+﻿.task {
+    display: inline-block; 
+    position: relative;
+    transition: color 0.3s;
+}
+
+.task.complete {
+    color: #999;
+}
+
+.task.complete::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 2px;
+    width: 0;
+    background: #333;
+    transform: translateY(-50%);
+    transition: width 0.4s ease;
+    width: 0;
+}
+
+.task.complete.animate::after {
+    width: 100%;
 }

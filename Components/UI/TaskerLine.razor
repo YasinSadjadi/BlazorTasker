@@ -1,7 +1,12 @@
 ﻿
 <div class="hstack">
     <div><InputCheckbox @bind-Value="Item.IsComplete" @bind-Value:after="updateItem" /></div>
-    <div class="px-2 flex-grow-1 @(Item.IsComplete ? "completed" : "")">@Item.Name</div>
+
+    <div class="px-2 flex-grow-1">
+        <p class="p-0 m-0 task @(Item.IsComplete ? "complete animate" : "")">
+            @Item.Name
+        </p>
+    </div>
 
     <div>
         <a @onclick="deleteItem">
