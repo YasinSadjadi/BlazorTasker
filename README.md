@@ -45,21 +45,23 @@ Tasker/
 │
 ├── Components
 │       ├── Pages/
-│       │     └── Index.razor # Main page showing task list
+│       │     └── Index.razor              # Main page showing task list
 │       ├── UI/
-│       │   └── TaskItem.razor # Reusable component for each task
+│       │   ├── TaskItem.razor             # Reusable component for each task
+|       |   └── PrioritySelector.razor     #Reusable component for setting priority to model
 │       ├── Layout/
-│           ├── MainLayout.razor # MainLayout including nav bar and etc
-|           └── NavMenu.razor # Nav menu of all project in layouts 
+│           ├── MainLayout.razor           # MainLayout including nav bar and etc
+|           └── NavMenu.razor              # Nav menu of all project in layouts 
 │
 ├── Models/
-│   └── TaskerItem.cs            # Task model class
+│   ├── TaskerItem.cs                      # Task model class
+|   └── GlobalEnums.cs                     # Global enums for project
 │
 ├── wwwroot/
 │   └── css/
-│       └── site.css             # Custom CSS (animations, gradients, etc.)
+│       └── site.css                       # Custom CSS (animations, gradients, etc.)
 │
-└── Program.cs                   # Blazor Server setup
+└── Program.cs                             # Blazor Server setup
 ```
 
 ---
@@ -111,7 +113,7 @@ Navigate to 👉 `https://localhost:7289`
 ## 🧠 Future Improvements
 
 * [ ] Local storage or database persistence
-* [ ] Task categories or priorities
+* [ ] Task categories
 * [ ] Due date and reminders
 * [ ] Dark / light theme toggle
 * [ ] PWA support
