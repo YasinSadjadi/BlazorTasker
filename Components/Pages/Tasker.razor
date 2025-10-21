@@ -11,23 +11,41 @@
             <img src="/img/Tasker_600.png" width="300" alt="Tasker logo" />
         </div>
         <div>
-            <EditForm Model="ti" OnValidSubmit="addTask">
+            <EditForm Model="ti" OnValidSubmit="addTask" class="task-form mt-3">
                 <DataAnnotationsValidator />
-                <div class="d-flex flex-row gap-2">
-                    <InputText @ref="textBoxTask" class="form-control" placeholder="Enter a task" @bind-Value="ti.Name"></InputText>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                <div class="row g-2 align-items-center">
+                    <div class="col-md-7 ">
+                        <InputText @ref="textBoxTask"
+                                   class="form-control"
+                                   placeholder="Enter a task"
+                                   @bind-Value="ti.Name" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <InputDate class="form-control"
+                                   @bind-Value="ti.Deadline" />
+                    </div>
+
+                    <div class="col-md-2 d-grid">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-plus-lg me-1"></i> Add
+                        </button>
+                    </div>
                 </div>
 
-                <div>
-                    <ValidationMessage style="font-size: 1.1rem;" For="() => ti.Name"></ValidationMessage>
+                <div class="mt-2 text-danger small">
+                    <ValidationMessage For="() => ti.Name" />
                 </div>
             </EditForm>
+
         </div>
 
         <hr />
 
         <div class="vstack gap-3">
-            @foreach (var LineItem in taskerItems.OrderBy(t => t.IsComplete).ThenBy(t => t.Priority).ThenByDescending(t => t.UpdatedDate))
+            @foreach (var LineItem in taskerItems.OrderBy(t => t.IsComplete)
+            .ThenByDescending(t => t.Deadline.HasValue ? t.Deadline.Value.Date == DateTime.Today.Date : false)
+            .ThenBy(t => t.Priority).ThenByDescending(t => t.UpdatedDate))
             {
                 <TaskerLine Item="LineItem" OnDeleteCallBack="deleteTask" OnUpdateCallback="updateTask" />
             }
