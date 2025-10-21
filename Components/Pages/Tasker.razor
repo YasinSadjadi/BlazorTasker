@@ -17,6 +17,7 @@
                     <InputText @ref="textBoxTask" class="form-control" placeholder="Enter a task" @bind-Value="ti.Name"></InputText>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
+
                 <div>
                     <ValidationMessage style="font-size: 1.1rem;" For="() => ti.Name"></ValidationMessage>
                 </div>

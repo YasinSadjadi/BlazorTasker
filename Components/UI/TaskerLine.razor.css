@@ -25,6 +25,15 @@
     width: 100%;
 }
 
+.task-item {
+    transition: box-shadow 0.15s ease-in-out; 
+}
+
+.task-item:hover {
+    box-shadow: 0 0 15px var(--shadow-color); 
+}
+
+
 .btn-transparent {
     background: transparent !important;
     border: none !important;

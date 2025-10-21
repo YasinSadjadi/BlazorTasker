@@ -1,6 +1,6 @@
 ﻿
-<div class="hstack align-items-center task-item border rounded-3 px-2 py-1 gap-1"
-     style="box-shadow: 0 0 7px @GetShadowColor();">
+<div class="hstack align-items-center task-item rounded-3 px-2 py-1 gap-1"
+     style="--shadow-color: @GetShadowColor();">
     <div><InputCheckbox class="form-check-input" @bind-Value="Item.IsComplete" @bind-Value:after="updateItem" /></div>
 
     <div class="px-2 flex-grow-1">
@@ -30,6 +30,11 @@
 
     private string GetShadowColor()
     {
+
+        if (Item.IsComplete)
+            return "darkgray";
+
+
         if (Item.Priority == Priority.High)
             return "red";
         else if (Item.Priority == Priority.Medium)
