@@ -1,0 +1,21 @@
+﻿
+
+<InputSelect class="form-select form-select-sm" @bind-Value="TaskerItem.Priority" @bind-Value:after="updateItem">
+    @foreach(var level in Enum.GetValues<Priority>())
+    {
+        <option value="@level">@level.ToString()</option>
+    }
+</InputSelect>
+
+@code {
+    [Parameter, EditorRequired]
+    public TaskerItem TaskerItem { get; set; }
+
+    [Parameter]
+    public EventCallback<TaskerItem> OnUpdateCallBack { get; set; }
+
+    public async Task updateItem()
+    {
+        await OnUpdateCallBack.InvokeAsync(TaskerItem);
+    }
+}

@@ -26,7 +26,7 @@
         <hr />
 
         <div class="vstack">
-            @foreach (var LineItem in taskerItems)
+            @foreach (var LineItem in taskerItems.OrderBy(t => t.IsComplete).ThenBy(t => t.Priority).ThenByDescending(t => t.UpdatedDate))
             {
                 <TaskerLine Item="LineItem" OnDeleteCallBack="deleteTask" OnUpdateCallback="updateTask" />
             }
@@ -51,7 +51,7 @@
         {
             await textBoxTask!.Element!.Value.FocusAsync();
         }
-    }  
+    }
 
     private async Task addTask()
     {
@@ -91,6 +91,7 @@
 
     private async Task updateTask(TaskerItem item)
     {
+        item.UpdatedDate = DateTime.Now;
         await SaveListAsync();
     }
 }

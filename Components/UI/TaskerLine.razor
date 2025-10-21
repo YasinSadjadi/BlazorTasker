@@ -1,11 +1,15 @@
 ﻿
-<div class="hstack align-items-center task-item border rounded-3 px-2 py-1">
+<div class="hstack align-items-center task-item border rounded-3 px-2 py-1 gap-1">
     <div><InputCheckbox class="form-check-input" @bind-Value="Item.IsComplete" @bind-Value:after="updateItem" /></div>
 
     <div class="px-2 flex-grow-1">
         <p class="p-0 m-0 task @(Item.IsComplete ? "complete animate" : "")">
             @Item.Name
         </p>
+    </div>
+
+    <div>
+        <PrioritySelector TaskerItem="Item" OnUpdateCallBack="updateItem"/>
     </div>
 
     <div>
