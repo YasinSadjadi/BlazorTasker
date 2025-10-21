@@ -18,7 +18,7 @@
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
                 <div>
-                    <ValidationMessage For="() => ti.Name"></ValidationMessage>
+                    <ValidationMessage style="font-size: 1.1rem;" For="() => ti.Name"></ValidationMessage>
                 </div>
             </EditForm>
         </div>
@@ -82,7 +82,7 @@
             var taskerItemJson = await JS.InvokeAsync<string>("localStorage.getItem", "TaskerList") ?? "[]";
             taskerItems = JsonSerializer.Deserialize<List<TaskerItem>>(taskerItemJson)!;
         }
-        catch (Exception e)
+        catch
         {
             taskerItems = new();
             await SaveListAsync();

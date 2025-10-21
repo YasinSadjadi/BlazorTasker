@@ -7,3 +7,8 @@
     border-radius: 10px;
     min-width: 50%;
 }
+
+
+.validation-message-show{
+    font-size: 1px;
+}
