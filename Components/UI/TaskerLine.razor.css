@@ -31,8 +31,8 @@
 }
 
 .task-item:hover {
-    box-shadow: 0 0 15px var(--shadow-color); 
-    transform: scale(1.02)
+    box-shadow: 0 0 12px var(--shadow-color); 
+    transform: scale(1.01)
 }
 
 
@@ -91,7 +91,7 @@
     border: 2px solid var(--bs-warning); /* رنگ هشدار بوت‌استرپ */
     box-shadow: 0 0 10px rgba(255, 193, 7, 0.6); /* زرد ملایم */
     background: linear-gradient(90deg, #fff8e1, #fff3cd); /* زمینه‌ی زرد کم‌رنگ */
-    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out, transform 0.2s ease-in-out;
 }
 
     .due-today:hover {
